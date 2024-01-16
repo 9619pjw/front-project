@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css" />
+  <title>토이 프로젝트</title>
+</head>
+<body>
+  <header>
+        <div class="header-content">
+          <img class="logo" src="img/Logo.svg" />
+          <nav id="nav">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Support</a></li>
+                <li><button>Download</button></li>
+              </ul>
+          </nav>
+        </div>
+        <div class="top-background">
+        <section class="text-wrapper">
+          <h1>Lorem ipsum is simply <br> dummy text of the printing and</h1>
+          <p>Lorem ipsum is simply dummy text of the printing and <br>
+            typesetting industry. <br>
+            Lorem ipsum has been the industry's standard dummy text <br>
+            ever since the 1500s, when an unknown</p>
+          <button type="button">Download</button>
+        </section>
+        <section class="main-image">
+          <img src="img/img_cat.png" alt="고양이 사진">
+        </section>
+      </div>
+  </header>
+  <br />
+  <br />
+  <article>
+    <div class="article-content">
+      <div class="article-image">
+        <img src="img/img_0.png" />
+      </div>
+      <div class="text-content">
+          <div class="lorem-ipsum-is">
+              Lorem Ipsum is simply <br>
+              dummy text of the printing <br>
+              and dummy text
+          </div>
+          <p class="lorem-ipsum-detail">
+              Lorem Ipsum is simply dummy text of the printing and typesetting<br>
+              industry.
+          </p>
+      </div>
+    </div>
+  </article>
+  <article>
+      <div class = "text-center">
+          <h2>dummy text of the printing and dummy</h2>
+      </div>
+      <p class="text-center-detail">
+          Lorem Ipsum is simply <span class="font-color">dummy text</span> of the printing and typesetting industry.<br>
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+      </p>
+      <br/>
+      <!-- 이미지 그리드 형식으로 출력 -->
+      <ul class="image-list"></ul>
+      <button class = "show-more">Show more</button>
+      <hr/>
+  </article>
+  <main>
+      <div class = "text-position"> Where you’ll be </div>
+      <p>330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
+      <br/>
+      <div class="map" id="map" style="width:85%;height:350px;"></div>
+  </main>
+  <footer>
+      <div>
+          <img class="logo-fin" src="img/Logo.svg" />
+      </div>
+  </footer>
+  <!-- 무한 스크롤 -->
+  <script>
+      const imageList = document.querySelector(".image-list");
+      let pageToFetch = 1;
+
+      async function fetchImages(pageNum) {
+          try {
+              const response = await fetch(`https://picsum.photos/v2/list?page=${pageNum}&limit=6`);
+
+              if (!response.ok) {throw new Error('error')};
+
+              const datas = await response.json();
+              console.log(datas);
+
+              makeImageList(datas);
+
+          } catch (e) {
+              console.error('error', e);
+          }
+      }
+
+      function makeImageList(datas){
+          datas.forEach((item)=>{
+              imageList.innerHTML += `<li><img src='${item.download_url}' alt=''></li>`;
+          })
+      }
+
+      fetchImages();
+
+      const showMoreBtn = document.querySelector(".show-more");
+      showMoreBtn.addEventListener('click', () => {
+          fetchImages(pageToFetch += 1);
+      });
+  </script>
+  <!--지도 API-->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1703bbee2561c4f484c3903ff2b1e85c"></script>
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+          mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+          };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+  </script>
+</body>
+</html>
