@@ -172,8 +172,32 @@ button{
 }
 
 footer{
-    width : 100%;
-    height : 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding :26px 15%;
+}
+
+.sns_area{
+    display : flex;
+    justify-content : center;
+    list-style : none;
+    padding : 0;
+    margin : 0;
+}
+
+.sns_area li{
+    padding-left: 20px;
+}
+
+.sns_area a{
+    display : inline-flex;
+    justify-content : center;
+    align-items : center;
+    border-radius : 50%;
+    background-color: #d97652;
+    width : 42px;
+    height : 42px;
 }
 
 .logo-fin{
