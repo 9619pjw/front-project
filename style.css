@@ -6,6 +6,13 @@ a {
     font-weight: 400;
 }
 
+.container{
+    max-width : 1920px;
+    margin: 0 auto;
+    padding : 0 15px;
+}
+
+
 .top-background {
     position: relative;
     max-width: 100%;
@@ -133,8 +140,8 @@ button{
     grid-template-columns : repeat(3,1fr);
     grid-gap : 10px;
     list-style : none;
+    margin : 0 auto;
     padding : 0;
-    margin : 0;
 }
 .image-list li{
     width : 378px;
@@ -167,8 +174,108 @@ button{
 .map {
     position : relative;
     margin : 0 auto;
-    width : 85%;
-    height : 350px;
+    width : 1280px;
+    height : 520px;
+}
+
+.sub-background {
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1280px;
+    height: 200px;
+    background-color: #263140;
+    border-radius: 30px;
+    margin : 40px auto;
+    padding: 0 30px;
+    box-sizing : border-box;
+}
+
+.text-section{
+    color : white;
+}
+
+.bold-text {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.light-text {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.enter-email-box {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 530px;
+    height: 60px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.email-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.enter-email-box input[type="email"] {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+}
+
+.enter-email-box button {
+    width: auto;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    background-color: #d97652;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/*모달 창*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-image: url('img/modal.png');
+    background-size: cover;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius : 30px;
+}
+
+.modal button{
+    width : 183px;
+    height : 50px;
 }
 
 footer{

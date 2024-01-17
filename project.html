@@ -7,6 +7,7 @@
 </head>
 <body>
   <header>
+      <div class = "container">
         <div class="header-content">
           <img class="logo" src="img/Logo.svg" />
           <nav id="nav">
@@ -31,10 +32,12 @@
           <img src="img/img_cat.png" alt="고양이 사진">
         </section>
       </div>
+      </div>
   </header>
   <br />
   <br />
   <article>
+    <div class="container">
     <div class="article-content">
       <div class="article-image">
         <img src="img/img_0.png" />
@@ -51,8 +54,10 @@
           </p>
       </div>
     </div>
+    </div>
   </article>
   <article>
+      <div class="container">
       <div class = "text-center">
           <h2>dummy text of the printing and dummy</h2>
       </div>
@@ -65,14 +70,39 @@
       <ul class="image-list"></ul>
       <button class = "show-more">Show more</button>
       <hr/>
+      </div>
   </article>
   <main>
-      <div class = "text-position"> Where you’ll be </div>
-      <p>330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
-      <br/>
-      <div class="map" id="map" style="width:85%;height:350px;"></div>
-      <br/>
-      <br/>
+      <div class="container">
+        <div class = "text-position"> Where you’ll be</div>
+          <p>330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
+          <br/>
+        <div class="map" id="map"></div>
+        <br/>
+        <br/>
+        <div class="sub-background">
+            <div class="text-section">
+                <p class="bold-text">Subscribe to our Blog post</p>
+                <p class="light-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br/>Lorem Ipsum has been the industry's standard dummy text </p>
+            </div>
+            <div class="enter-email-box">
+                <img src="img/mail.png" alt="Email Icon" class="email-icon">
+                <input type="email" placeholder="Enter your email">
+                <button class="subscribe-button">Subscribe</button>
+            </div>
+            <!--모달창-->
+            <div id="subscribeModal" class="modal">
+                <div class="modal-content">
+                    <img src="img/modal_cat.png" alt="Modal Image" style="width:110px; height:112px;">
+                    <div class = "text-center">
+                        Thank you!
+                    </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing industry. </p>
+                    <button class="button">OK! I Love HODU</button>
+                </div>
+            </div>
+        </div>
+      </div>
   </main>
   <footer>
       <div class="logo-fin">
@@ -146,6 +176,23 @@
 
     // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
     var map = new kakao.maps.Map(mapContainer, mapOption);
+  </script>
+  <!--모달창-->
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var modal = document.getElementById('subscribeModal');
+          var btn = document.querySelector('.subscribe-button');
+
+          btn.onclick = function() {
+              modal.style.display = 'block';
+          }
+
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = 'none';
+              }
+          }
+      });
   </script>
 </body>
 </html>
