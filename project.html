@@ -7,7 +7,7 @@
 </head>
 <body>
   <header>
-      <div class = "container">
+      <div class ="container">
         <div class="header-content">
           <img class="logo" src="img/Logo.svg" />
           <nav id="nav">
@@ -38,47 +38,44 @@
   <br />
   <article>
     <div class="container">
-    <div class="article-content">
-      <div class="article-image">
-        <img src="img/img_0.png" />
-      </div>
-      <div class="text-content">
-          <div class="lorem-ipsum-is">
-              Lorem Ipsum is simply <br>
-              dummy text of the printing <br>
-              and dummy text
-          </div>
-          <p class="lorem-ipsum-detail">
-              Lorem Ipsum is simply dummy text of the printing and typesetting<br>
-              industry.
-          </p>
-      </div>
-    </div>
+        <div class="article-content">
+            <div class="article-image">
+                <img src="img/img_0.png" />
+            </div>
+            <div class="text-content">
+                <div class="lorem-ipsum-is">
+                    Lorem Ipsum is simply <br>
+                    dummy text of the printing <br>
+                    and dummy text
+                </div>
+                <p class="lorem-ipsum-detail">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting<br>industry.
+                </p>
+            </div>
+        </div>
     </div>
   </article>
   <article>
       <div class="container">
-      <div class = "text-center">
+        <div class = "text-center">
           <h2>dummy text of the printing and dummy</h2>
-      </div>
-      <p class="text-center-detail">
-          Lorem Ipsum is simply <span class="font-color">dummy text</span> of the printing and typesetting industry.<br>
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-      </p>
-      <br/>
-      <!-- 이미지 그리드 형식으로 출력 -->
-      <ul class="image-list"></ul>
-      <button class = "show-more">Show more</button>
-      <hr/>
+        </div>
+        <p class="text-center-detail">
+              Lorem Ipsum is simply <span class="font-color">dummy text</span> of the printing and typesetting industry.<br>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+        </p>
+        <br/>
+        <!-- 이미지 그리드 형식으로 출력 -->
+        <ul class="image-list"></ul>
+        <button class = "show-more">Show more</button>
+        <hr/>
       </div>
   </article>
   <main>
       <div class="container">
-        <div class = "text-position"> Where you’ll be</div>
-          <p>330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
-          <br/>
+        <div class="text-position">Where you’ll be</div>
+        <p>330, Cheomdan-ro, Jeju-si, Jeju-do, Republic of Korea</p>
         <div class="map" id="map"></div>
-        <br/>
         <br/>
         <div class="sub-background">
             <div class="text-section">
@@ -98,13 +95,20 @@
                         Thank you!
                     </div>
                     <p>Lorem Ipsum is simply dummy text of the printing industry. </p>
-                    <button class="button">OK! I Love HODU</button>
+                    <button class="close-modal">OK! I Love HODU</button>
                 </div>
             </div>
         </div>
       </div>
   </main>
   <footer>
+      <button id="scrollToTopBtn" class="scroll-to-top-btn">
+          <img src="img/scroll-top.svg" alt="Scroll to top" />
+      </button>
+      <div class ="container">
+      <img src="img/img_7.png" alt="Footer Image" class="footer-img"/>
+      <br/>
+      <div class="footer-content">
       <div class="logo-fin">
           <img src="img/Logo-fin.svg" alt="Hodu LOGO">
       </div>
@@ -130,8 +134,11 @@
               </a>
           </li>
       </ul>
+      </div>
+      </div>
   </footer>
-  <!-- 무한 스크롤 -->
+
+  <!-- 이미지 무한 스크롤 -->
   <script>
       const imageList = document.querySelector(".image-list");
       let pageToFetch = 1;
@@ -159,10 +166,35 @@
       }
 
       fetchImages();
+      const infinityScroll = () => {
+          let scrollTotal = document.documentElement.scrollHeight;
+          let scrollCurrent = window.scrollY + window.innerHeight;
+
+          // 스크롤이 페이지 바닥에 거의 도달했는지 확인
+          if (scrollCurrent >= scrollTotal - 100) { // 100px
+              fetchImages(pageToFetch++);
+          }
+      }
+      const throttling = (callback, limit) => {
+          let inThrottle;
+          return () => {
+              if (!inThrottle) {
+                  callback();
+                  inThrottle = true;
+                  setTimeout(() => {
+                      inThrottle = false;
+                  }, limit);
+              }
+          };
+      };
 
       const showMoreBtn = document.querySelector(".show-more");
+
       showMoreBtn.addEventListener('click', () => {
           fetchImages(pageToFetch += 1);
+          showMoreBtn.style.display='none';
+
+          window.addEventListener('scroll', throttling(infinityScroll, 300));
       });
   </script>
   <!--지도 API-->
@@ -170,7 +202,7 @@
   <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
           mapOption = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            center: new kakao.maps.LatLng(33.4423379727783, 126.571449734542), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
           };
 
@@ -182,9 +214,15 @@
       document.addEventListener('DOMContentLoaded', function () {
           var modal = document.getElementById('subscribeModal');
           var btn = document.querySelector('.subscribe-button');
+          var closeBtn = document.querySelector('.close-modal');
 
           btn.onclick = function() {
               modal.style.display = 'block';
+          }
+
+          // 모달 내부 닫기 버튼 클릭 이벤트
+          closeBtn.onclick = function() {
+              modal.style.display = 'none';
           }
 
           window.onclick = function(event) {
@@ -192,6 +230,24 @@
                   modal.style.display = 'none';
               }
           }
+      });
+  </script>
+  <!-- Top 버튼 -->
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+          scrollToTopBtn.addEventListener('mouseover', function() {
+              scrollToTopBtn.innerHTML = '<img src="img/scroll-top-btn.svg" alt="Scroll to top" />';
+          });
+
+          scrollToTopBtn.addEventListener('mouseout', function() {
+              scrollToTopBtn.innerHTML = '<img src="img/scroll-top.svg" alt="Scroll to top" />';
+          });
+
+          scrollToTopBtn.addEventListener('click', function() {
+              window.scrollTo({ top: 0 });
+          });
       });
   </script>
 </body>
