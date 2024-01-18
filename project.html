@@ -112,7 +112,8 @@
   </main>
   <footer>
       <button id="scrollToTopBtn" class="scroll-to-top-btn">
-          <img src="img/scroll-top.svg" alt="Scroll to top" />
+          <img src="img/scroll-top.svg" alt="Scroll to top" class="scroll-top-default" />
+          <img src="img/scroll-top-btn.svg" alt="Scroll to up" class="scroll-top-hover" style="display: none;" />
       </button>
       <div class ="container">
       <img src="img/img_7.png" alt="Footer Image" class="footer-img"/>
@@ -161,17 +162,24 @@
   <script>
       document.addEventListener('DOMContentLoaded', function () {
           var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+          var scrollTopDefaultImg = document.querySelector('.scroll-top-default');
+          var scrollTopHoverImg = document.querySelector('.scroll-top-hover');
 
+          // 마우스를 버튼 위에 올렸을 때 이미지 변경
           scrollToTopBtn.addEventListener('mouseover', function() {
-              scrollToTopBtn.innerHTML = '<img src="img/scroll-top-btn.svg" alt="Scroll to top" />';
+              scrollTopDefaultImg.style.display = 'none';
+              scrollTopHoverImg.style.display = 'block';
           });
 
+          // 마우스를 버튼에서 내렸을 때 이미지 변경
           scrollToTopBtn.addEventListener('mouseout', function() {
-              scrollToTopBtn.innerHTML = '<img src="img/scroll-top.svg" alt="Scroll to top" />';
+              scrollTopDefaultImg.style.display = 'block';
+              scrollTopHoverImg.style.display = 'none';
           });
 
+          // 버튼을 클릭했을 때 페이지 맨 위로 스크롤
           scrollToTopBtn.addEventListener('click', function() {
-              window.scrollTo({ top: 0 });
+              window.scrollTo({ top: 0, behavior: 'smooth' });
           });
       });
   </script>
