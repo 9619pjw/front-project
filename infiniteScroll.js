@@ -1,4 +1,4 @@
-// 버튼을 누르면 6개씩 불러와지는 형식
+
 const imageList = document.querySelector(".image-list");
 let pageToFetch = 1;
 
@@ -26,39 +26,14 @@ function makeImageList(datas){
 
 fetchImages();
 
+// 버튼을 누를 때마다 6개씩 불러오는 방식
 const showMoreBtn = document.querySelector(".show-more");
 showMoreBtn.addEventListener('click', () => {
     fetchImages(pageToFetch += 1);
 });
 
-// 버튼 누르면 버튼이 사라지고 무한 스크롤 진행되는 방식
-// const imageList = document.querySelector(".image-list");
-// let pageToFetch = 1;
-//
-// async function fetchImages(pageNum) {
-//     try {
-//         const response = await fetch(`https://picsum.photos/v2/list?page=${pageNum}&limit=6`);
-//
-//         if (!response.ok) {throw new Error('error')};
-//
-//         const datas = await response.json();
-//         console.log(datas);
-//
-//         makeImageList(datas);
-//
-//     } catch (e) {
-//         console.error('error', e);
-//     }
-// }
-//
-// function makeImageList(datas){
-//     datas.forEach((item)=>{
-//         imageList.innerHTML += `<li><img src='${item.download_url}' alt=''></li>`;
-//     })
-// }
-//
-// fetchImages();
-//
+
+// 버튼을 누르면 비활성화되고 무한 스크롤 실행하는 방식
 // const infinityScroll = () => {
 //     let scrollTotal = document.documentElement.scrollHeight;
 //     let scrollCurrent = window.scrollY + window.innerHeight;
