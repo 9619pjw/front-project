@@ -168,10 +168,20 @@ body{
     border-radius : 30px;
     object-fit: cover;
 }
-.show-more {
+
+.image-list-phrase{
     display: block;
-    padding: 10px 0;
+    padding: 0;
     margin: 20px auto;
+    cursor: pointer;
+    font-size : 24px;
+    text-align: center;
+    font-weight : 700;
+    line-height : 30px;
+}
+
+.show-more {
+    padding: 10px 0;
     cursor: pointer;
     background-color : #d97652;
     width : 140px;
@@ -179,9 +189,7 @@ body{
     border : none;
     border-radius : 40px;
     color : white;
-    font-weight : 700;
     font-size : 16px;
-    text-align: center;
 }
 
 .text-position{
@@ -192,7 +200,7 @@ body{
     margin : 0 auto;
 }
 
-/*지도*/
+/* 지도 css api */
 .map_wrap {position:relative; margin : 0 auto;width:85%;height:520px;}
 .radius_border{border:1px solid #919191;border-radius:5px;}
 .custom_typecontrol {position:absolute;top:10px;right:10px;overflow:hidden;width:130px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
@@ -207,6 +215,7 @@ body{
 .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
 .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
 
+/* 이메일 입력창 */
 .sub-background {
     display : flex;
     justify-content: space-between;
@@ -369,11 +378,42 @@ footer{
     right: 20px;
     border: none;
     background: none;
+    background-color: transparent;
     cursor: pointer;
+    padding : 0;
+    width : 50px;
+    height : 50px;
+    overflow: hidden;
 }
 
 .scroll-to-top-btn img {
-    width: 50px;
-    height: auto;
-    transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.scroll-top-default{
+    visibility: visible;
+    opacity : 1;
+}
+
+.scroll-top-hover {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.scroll-to-top-btn:hover .scroll-top-default {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.scroll-to-top-btn:hover .scroll-top-hover {
+    visibility: visible;
+    opacity: 1;
 }
