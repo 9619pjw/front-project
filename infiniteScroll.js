@@ -2,6 +2,14 @@
 const imageList = document.querySelector(".image-list");
 let pageToFetch = 1;
 
+// 초기 이미지를 출력하는 함수
+function loadInitialImages() {
+    for (let i = 1; i <= 6; i++) {
+        imageList.innerHTML += `<li><img src='img/img_${i}.png' alt=''></li>`;
+    }
+}
+
+
 async function fetchImages(pageNum) {
     try {
         const response = await fetch(`https://picsum.photos/v2/list?page=${pageNum}&limit=6`);
@@ -24,7 +32,7 @@ function makeImageList(datas){
     })
 }
 
-fetchImages();
+loadInitialImages();
 
 // 버튼을 누를 때마다 6개씩 불러오는 방식
 const showMoreBtn = document.querySelector(".show-more");
