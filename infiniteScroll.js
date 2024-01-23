@@ -9,7 +9,6 @@ function loadInitialImages() {
     }
 }
 
-
 async function fetchImages(pageNum) {
     try {
         const response = await fetch(`https://picsum.photos/v2/list?page=${pageNum}&limit=6`);
@@ -42,8 +41,8 @@ const infinityScroll = () => {
     let scrollTotal = document.documentElement.scrollHeight;
     let scrollCurrent = window.scrollY + window.innerHeight;
 
-    // 스크롤이 페이지 바닥에 거의 도달했는지 확인
-    if (scrollCurrent >= scrollTotal - 200 && isScrollEnabled) {
+    // 스크롤이 위치 확인 후 다시 이미지 받아옴
+    if (scrollCurrent >= scrollTotal - 1500 && isScrollEnabled) {
         fetchImages(pageToFetch++);
     }
 }
@@ -63,7 +62,7 @@ const throttling = (callback, limit) => {
 
 const showMoreBtn = document.querySelector(".show-more");
 
-// "더 보기" 버튼을 클릭하면 무한 스크롤을 종료하거나 시작하는 기능
+// 버튼을 클릭하면 무한 스크롤을 종료하거나 시작
 showMoreBtn.addEventListener('click', () => {
     isScrollEnabled = !isScrollEnabled;
     showMoreBtn.textContent = isScrollEnabled ? 'Stop Scroll' : 'Show More';
