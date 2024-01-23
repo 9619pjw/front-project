@@ -2,7 +2,7 @@
 const imageList = document.querySelector(".image-list");
 let pageToFetch = 1;
 
-// 초기 이미지를 출력하는 함수
+// 초기 이미지를 출력
 function loadInitialImages() {
     for (let i = 1; i <= 6; i++) {
         imageList.innerHTML += `<li><img src='img/img_${i}.png' alt=''></li>`;
