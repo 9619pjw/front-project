@@ -1,6 +1,26 @@
-#front-project
+# FE project
+------------
+### Hodu Homepage
+###### Function
+<ol>
+    <li>이메일 유효성 검증
+
+https://github.com/9619pjw/front-project/assets/97871451/964244bb-3b4e-4617-bd41-57120c4b795f
+
+</li>
+    <li>상단 버튼 스크롤 기능
+
+https://github.com/9619pjw/front-project/assets/97871451/fe958a37-e5b7-433b-9c57-eaefe8881519
+
+</li>
+    <li>다운로드 버튼으로 이미지 다운로드</li>
+    <li>하단 버튼 링크</li>
+</ol>
 
 
 
-https://github.com/9619pjw/front-project/assets/97871451/2d1ba80d-6388-402f-a56f-9f3ecbe8fc62
-
+------------
+###### Used
+<img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">&nbsp;
+<img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">&nbsp;
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javaScript&logoColor=white">&nbsp;
