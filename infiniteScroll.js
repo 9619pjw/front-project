@@ -42,7 +42,7 @@ const infinityScroll = () => {
     let scrollCurrent = window.scrollY + window.innerHeight;
 
     // 스크롤이 위치 확인 후 다시 이미지 받아옴
-    if (scrollCurrent >= scrollTotal - 1500 && isScrollEnabled) {
+    if (scrollCurrent >= scrollTotal - 1400 && isScrollEnabled) {
         fetchImages(pageToFetch++);
     }
 }
