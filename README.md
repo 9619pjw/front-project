@@ -10,10 +10,10 @@
     <li>이메일 유효성 검증</li>
     <li>하단 버튼 링크</li>
 </ol>
-------
 
 
 
+------------
 ###### Used
 <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">&nbsp;
 <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">&nbsp;
