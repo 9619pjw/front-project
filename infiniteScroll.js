@@ -29,46 +29,52 @@ async function fetchImages(pageNum) {
 function makeImageList(datas){
     datas.forEach((item)=>{
         imageList.innerHTML += `<li><img src='${item.download_url}' alt=''></li>`;
-    })
+    });
 }
-
+// 초기 이미지 6개 출력
 loadInitialImages();
 
-// 버튼을 누를 때마다 6개씩 불러오는 방식
+
+let isScrollEnabled = false;
+
+// 무한 스크롤 함수
+const infinityScroll = () => {
+    let scrollTotal = document.documentElement.scrollHeight;
+    let scrollCurrent = window.scrollY + window.innerHeight;
+
+    // 스크롤이 페이지 바닥에 거의 도달했는지 확인
+    if (scrollCurrent >= scrollTotal - 200 && isScrollEnabled) {
+        fetchImages(pageToFetch++);
+    }
+}
+
+const throttling = (callback, limit) => {
+    let inThrottle;
+    return () => {
+        if (!inThrottle) {
+            callback();
+            inThrottle = true;
+            setTimeout(() => {
+                inThrottle = false;
+            }, limit);
+        }
+    };
+};
+
 const showMoreBtn = document.querySelector(".show-more");
+
+// "더 보기" 버튼을 클릭하면 무한 스크롤을 종료하거나 시작하는 기능
 showMoreBtn.addEventListener('click', () => {
-    fetchImages(pageToFetch += 1);
+    isScrollEnabled = !isScrollEnabled;
+    showMoreBtn.textContent = isScrollEnabled ? 'Stop Scroll' : 'Show More';
 });
 
+// 무한 스크롤 기능을 시작하는 이벤트 리스너 추가
+window.addEventListener('scroll', throttling(infinityScroll, 300));
 
-// 버튼을 누르면 비활성화되고 무한 스크롤 실행하는 방식
-// const infinityScroll = () => {
-//     let scrollTotal = document.documentElement.scrollHeight;
-//     let scrollCurrent = window.scrollY + window.innerHeight;
-//
-//     // 스크롤이 페이지 바닥에 거의 도달했는지 확인
-//     if (scrollCurrent >= scrollTotal - 100) { // 100px
-//         fetchImages(pageToFetch++);
-//     }
-// }
-// const throttling = (callback, limit) => {
-//     let inThrottle;
-//     return () => {
-//         if (!inThrottle) {
-//             callback();
-//             inThrottle = true;
-//             setTimeout(() => {
-//                 inThrottle = false;
-//             }, limit);
-//         }
-//     };
-// };
-//
+
+// 버튼을 누를 때마다 6개씩 불러오는 방식
 // const showMoreBtn = document.querySelector(".show-more");
-//
 // showMoreBtn.addEventListener('click', () => {
 //     fetchImages(pageToFetch += 1);
-//     showMoreBtn.style.display='none';
-//
-//     window.addEventListener('scroll', throttling(infinityScroll, 300));
 // });
