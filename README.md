@@ -4,11 +4,15 @@
 ###### Function
 <ol>
     <li>이메일 유효성 검증
-https://github.com/9619pjw/front-project/assets/97871451/44442bd8-5d72-454e-aac7-3c7ec2d9ceec
-    </li>
+
+https://github.com/9619pjw/front-project/assets/97871451/964244bb-3b4e-4617-bd41-57120c4b795f
+
+</li>
     <li>상단 버튼 스크롤 기능
-https://github.com/9619pjw/front-project/assets/97871451/5b3904db-7e97-4869-97fc-0f684ae417f9
-    </li>
+
+https://github.com/9619pjw/front-project/assets/97871451/fe958a37-e5b7-433b-9c57-eaefe8881519
+
+</li>
     <li>다운로드 버튼으로 이미지 다운로드</li>
     <li>하단 버튼 링크</li>
 </ol>
